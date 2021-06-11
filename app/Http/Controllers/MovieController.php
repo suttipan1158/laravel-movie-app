@@ -40,6 +40,7 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         //
+        // print("KO"+ $request);
         $request->validate([
             'imdbID'=>'required',
             'user_id'=>'required',
@@ -51,8 +52,8 @@ class MovieController extends Controller
 
         Movie::create($request->all());
 
-        // return redirect()->route('movies.index')
-        //         ->with('success','Movie created successfully.');
+         return redirect()->route('movies.index')
+                ->with('success','Movie created successfully.');
     }
 
     /**
