@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[IndexController::class, 'index']);
 
 Route::resource('movies',MovieController::class);
+// Route::get('insertMovie/{id}', [MovieController::class, 'insertMovie'])->name('insert');
+
+Route::get('insertMovie/{id}/{uid}', [MovieController::class, 'insertMovie'])->name('insert');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

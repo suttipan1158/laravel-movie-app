@@ -9,6 +9,10 @@ class Movie extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'imdbID','user_id','Title','Year','Type','Poster'
+        'user_id',
+        'Title',
+        'Year',
+        'Type',
+        'Poster'
     ];
 }
